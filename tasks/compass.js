@@ -18,6 +18,10 @@ module.exports = function (grunt) {
     }, function (err, result, code) {
       var success = code === 0;
 
+      if (code === 1 || err) {
+        grunt.fail.fatal('Fix the above scss errors.');
+      }
+
       if (code === 127) {
         return grunt.warn(
           'You need to have Ruby and Compass installed ' +
